@@ -17,8 +17,7 @@
         "sensio/framework-extra-bundle": "2.2.*",
         "sensio/generator-bundle": "2.2.*",
         "jms/security-extra-bundle": "1.4.*",
-        "jms/di-extra-bundle": "1.3.*",
-	"symfony-cmf/blog-bundle": "dev-master"
+        "jms/di-extra-bundle": "1.3.*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -37,7 +36,7 @@
     "config": {
         "bin-dir": "bin"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "alpha",
     "process-timeout": "3600",
     "extra": {
         "symfony-app-dir": "app",

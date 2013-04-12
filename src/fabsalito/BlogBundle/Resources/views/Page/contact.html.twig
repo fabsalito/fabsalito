@@ -1,0 +1,76 @@
+{% extends 'fabsalitoBlogBundle::layout.html.twig' %}
+
+{% form_theme form _self %}
+
+{% block field_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+        {% for error in errors %}
+            {{
+                error.messagePluralization is null
+                    ? error.messageTemplate|trans(error.messageParameters, 'validators')
+                    : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+            }} <br>
+        {% endfor %}
+    {% endif %}
+{% endspaceless %}
+{% endblock field_errors %}
+
+{% block title%}Contacto{% endblock title %}
+
+{% block body %}
+<div class="span12">
+
+    <form action="{{ path('fabsalito_blog_contact') }}" method="post" {{ form_enctype(form) }}>
+        <fieldset>
+            <legend>Contacto</legend>
+            
+            <div>
+                {{ form_label(form.name, 'Nombre') }}
+                <p class="text-error">
+                    {{ form_errors(form.name) }}
+                </p>
+                {{ form_widget(form.name,  { 'attr': { 
+                    'class': 'input-block-level'
+                    }}) 
+                }}
+            </div>
+
+            <div>
+                {{ form_label(form.email, 'Email') }}
+                <p class="text-error">{{ form_errors(form.email) }}</p>
+                {{ form_widget(form.email,  { 'attr': { 
+                    'class': 'input-block-level'
+                    }}) 
+                }}
+            </div>
+
+            <div>
+                {{ form_label(form.subject, 'Título') }}
+                <p class="text-error">{{ form_errors(form.subject) }}</p>
+                {{ form_widget(form.subject,  { 'attr': { 
+                    'class': 'input-block-level'
+                    }}) 
+                }}
+            </div>
+
+            <div>
+                {{ form_label(form.content, 'Mensaje') }}
+                <p class="text-error">{{ form_errors(form.content) }}</p>
+                {{ form_widget(form.content,  { 'attr': { 
+                    'class': 'input-block-level'
+                    }}) 
+                }}
+            </div>
+            
+            {{ form_rest(form) }}
+
+            <input class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit" value="Enviar" />
+        </fieldset>
+    </form>
+</div>    
+{% endblock body %}
+
+{% block sidebar %}
+
+{% endblock sidebar %}

@@ -1,0 +1,4 @@
+fabsalito_blog:
+    resource: "@fabsalitoBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+

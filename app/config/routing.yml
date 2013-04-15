@@ -1,4 +1,8 @@
+frontend:
+    resource: "@FrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
 fabsalito_blog:
     resource: "@fabsalitoBlogBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /blog
 

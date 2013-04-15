@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new fabsalito\BlogBundle\fabsalitoBlogBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+            new fabsalito\FrontendBundle\FrontendBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

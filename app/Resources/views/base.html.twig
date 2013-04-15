@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>{% block title %}Home{% endblock %} - fabaslito::blog</title>
+    <title>{% block title_primary %}Home{% endblock title_primary %} - {% block title_secondary %}fabsalito{% endblock title_secondary %}</title>
 
         
 
@@ -37,24 +37,18 @@
             <div class="span12">
                 <header id="header">
                     {% block header %}
-                        {% block navigation %}
                         <div class="navbar navbar-static-top pull-right">
-                            <ul class="nav">
-                                <li><a href="{{ path('fabsalito_blog_homepage') }}">Home</a></li>
-                                <li><a href="{{ path('fabsalito_blog_about') }}">About</a></li>
-                                <li><a href="{{ path('fabsalito_blog_contact') }}">Contacto</a></li>
-                            </ul>
+                            {% block navigation %}
+                            
+                            {% endblock navigation %}
                         </div>
-                        {% endblock %}
 
                         <div class="page-header">
                             <h1>
-                                {% block blog_title %}
-                                fabsalito::blog
-                                    {% block blog_tagline %}
-                                    <small>DTD1poco</small>
-                                    {% endblock blog_tagline %}
-                                {% endblock blog_title %}
+                                {% block blog_title %}fabsalito{% endblock blog_title %}
+                                <small>
+                                    {% block blog_tagline %}Development{% endblock blog_tagline %}
+                                </small>    
                             </h1>
                         </div>
                     {% endblock header %}

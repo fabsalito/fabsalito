@@ -1,6 +1,6 @@
 <?php
 
-namespace fabsalito\BlogBundle\Entity;
+namespace fabsalito\FrontendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  *
  * @ORM\Table(name="blog_contact")
- * @ORM\Entity(repositoryClass="fabsalito\BlogBundle\Entity\ContactRepository")
+ * @ORM\Entity(repositoryClass="fabsalito\Frontend\Entity\ContactRepository")
  */
 class Contact
 {
@@ -59,7 +59,6 @@ class Contact
      *
      * @ORM\Column(name="content", type="text")
      *
-     * @Assert\Type(type="text")
      * @Assert\MinLength(50)
      */
     private $content;

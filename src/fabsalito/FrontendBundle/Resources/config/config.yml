@@ -1,0 +1,3 @@
+parameters:
+    # dirección de correo electrónico para contacto del Blogger
+    frontend.emails.contact_email: fabricio.salinas@gmail.com

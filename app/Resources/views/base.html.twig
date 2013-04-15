@@ -10,7 +10,6 @@
     {% block stylesheets %}
     {% stylesheets filter='less,cssrewrite,?yui_css'
         '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
-        'css/estilosTemporales.css'
     %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}
@@ -39,7 +38,7 @@
                     {% block header %}
                         <div class="navbar navbar-static-top pull-right">
                             {% block navigation %}
-                            
+                                {{ knp_menu_render('frontend_main') }}
                             {% endblock navigation %}
                         </div>
 

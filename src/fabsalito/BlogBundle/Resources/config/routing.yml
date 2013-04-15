@@ -3,15 +3,3 @@ fabsalito_blog_homepage:
     defaults: { _controller: fabsalitoBlogBundle:Page:index }
     requirements:
         _method:  GET
-
-fabsalito_blog_about:
-    pattern:  /about
-    defaults: { _controller: fabsalitoBlogBundle:Page:about }
-    requirements:
-        _method:  GET
-
-fabsalito_blog_contact:
-    pattern:  /contact
-    defaults: { _controller: fabsalitoBlogBundle:Page:contact }
-    requirements:
-        _method:  GET|POST

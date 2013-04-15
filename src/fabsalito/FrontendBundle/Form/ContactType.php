@@ -1,6 +1,6 @@
 <?php
 
-namespace fabsalito\BlogBundle\Form;
+namespace fabsalito\FrontendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,7 +21,7 @@ class ContactType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'fabsalito\BlogBundle\Entity\Contact'
+            'data_class' => 'fabsalito\FrontendBundle\Entity\Contact'
         ));
     }
 

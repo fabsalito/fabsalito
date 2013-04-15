@@ -1,4 +1,4 @@
-{% extends 'fabsalitoBlogBundle::layout.html.twig' %}
+{% extends 'FrontendBundle::layout.html.twig' %}
 
 {% form_theme form _self %}
 
@@ -16,17 +16,23 @@
 {% endspaceless %}
 {% endblock field_errors %}
 
-{% block title_primary %}Contacto{% endblock title_primary %}
+{% block title_primary %}Contact{% endblock title_primary %}
 
 {% block body %}
 <div class="span12">
 
-    <form action="{{ path('fabsalito_blog_contact') }}" method="post" {{ form_enctype(form) }}>
+    {% if app.session.hasFlash('blogger-notice') %}
+        <p class="text-info text-center">
+            {{ app.session.flash('blogger-notice') }}
+        </p>
+    {% endif %}
+
+    <form action="{{ path('frontend_contact') }}" method="post" {{ form_enctype(form) }}>
         <fieldset>
             <legend>Contacto</legend>
             
             <div>
-                {{ form_label(form.name, 'Nombre') }}
+                {{ form_label(form.name, 'Name') }}
                 <p class="text-error">
                     {{ form_errors(form.name) }}
                 </p>
@@ -46,7 +52,7 @@
             </div>
 
             <div>
-                {{ form_label(form.subject, 'Título') }}
+                {{ form_label(form.subject, 'Subject') }}
                 <p class="text-error">{{ form_errors(form.subject) }}</p>
                 {{ form_widget(form.subject,  { 'attr': { 
                     'class': 'input-block-level'
@@ -55,7 +61,7 @@
             </div>
 
             <div>
-                {{ form_label(form.content, 'Mensaje') }}
+                {{ form_label(form.content, 'Message') }}
                 <p class="text-error">{{ form_errors(form.content) }}</p>
                 {{ form_widget(form.content,  { 'attr': { 
                     'class': 'input-block-level'
@@ -65,7 +71,7 @@
             
             {{ form_rest(form) }}
 
-            <input class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit" value="Enviar" />
+            <input class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit" value="Send" />
         </fieldset>
     </form>
 </div>    

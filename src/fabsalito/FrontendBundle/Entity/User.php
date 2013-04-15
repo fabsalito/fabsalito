@@ -1,6 +1,6 @@
 <?php
 
-namespace fabsalito\BlogBundle\Entity;
+namespace fabsalito\FrontendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;

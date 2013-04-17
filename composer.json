@@ -20,7 +20,8 @@
         "jms/di-extra-bundle": "1.3.*",
 	    "mopa/bootstrap-bundle": "2.*",
 	    "twitter/bootstrap": "2.*",
-        "knplabs/knp-menu-bundle" : "1.*"
+        "knplabs/knp-menu-bundle" : "1.*",
+        "doctrine/doctrine-fixtures-bundle": "2.*"
     },
     "scripts": {
         "post-install-cmd": [

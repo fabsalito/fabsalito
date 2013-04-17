@@ -1,0 +1,29 @@
+{% extends 'fabsalitoBlogBundle::layout.html.twig' %}
+
+{% block title_primary %}{{ blog.title }}{% endblock title_primary %}
+
+{% block body %}
+<div class="span9">
+    <div class="muted">
+        <time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time>
+    </div>
+
+    <legend>{{ blog.title }}</legend>
+    
+    <ul class="thumbnails">
+        <li class="span4">
+            <a href="#" class="thumbnail">
+                <img src="{{ asset(['images/', blog.image]|join) }}" alt="{{ blog.title }} image not found">
+            </a>
+        </li>
+    </ul>
+
+    <p>{{ blog.blog }}</p>
+
+    <h3>Comments</h3>
+    {% include 'fabsalitoBlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
+
+    <h3>Add Comment</h3>
+    {{ render(controller('fabsalitoBlogBundle:Comment:new', { 'blog_id': blog.id })) }}
+</div>
+{% endblock %}

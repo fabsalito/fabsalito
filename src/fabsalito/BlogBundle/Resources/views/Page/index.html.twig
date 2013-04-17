@@ -4,7 +4,32 @@
 
 {% block body %}
 <div class="span9">
-    #INDEX_CONTENT#
+    {% for blog in blogs %}
+        <div class="muted">
+            <time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time>
+        </div>
+        
+        <h3><a href="{{ path('fabsalito_blog_show', { 'id': blog.id }) }}">{{ blog.title }}</a></h3>
+
+        <ul class="thumbnails">
+            <li class="span4">
+                <a href="#" class="thumbnail">
+                    <img src="{{ asset(['images/', blog.image]|join) }}" alt="{{ blog.title }} image not found">
+                </a>
+            </li>
+        </ul>
+
+        <p>{{ blog.blog(500) }}</p>
+        <p><a class="btn btn-primary" href="{{ path('fabsalito_blog_show', { 'id': blog.id }) }}">Continue reading...</a></p>
+
+        <ul>
+            <li><strong>Comments:</strong> -</li>
+            <li><strong>Posted by:</strong> {{blog.author}} at {{ blog.created|date('h:iA') }}</li>
+            <li><strong>Tags:</strong> {{ blog.tags }}</li>
+        </ul>
+    {% else %}
+        <p class="text-info">There are no blog entries for fabsalito::blog</p>
+    {% endfor %}
 </div>    
 {% endblock body %}
 

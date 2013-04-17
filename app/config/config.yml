@@ -25,6 +25,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+        resources:
+            - ':Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -42,6 +45,16 @@ assetic:
             node:       /usr/bin/node
             node_paths: [/usr/lib/node_modules]
             apply_to: "\.less$"
+    assets:
+        bootstrap_less:
+            inputs:
+                - "@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less"
+            filters: [less]
+        css:
+            inputs:
+                - "%kernel.root_dir%/../web/css/twitter-bootstrap-extras.css"
+            filters: [cssrewrite]
+
 
 # Doctrine Configuration
 doctrine:

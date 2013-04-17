@@ -1,0 +1,11 @@
+{% for comment in comments %}
+    <article id="comment-{{ comment.id }}">
+        <p>
+            <strong>{{ comment.user }}</strong> <span class="muted">commented <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('l, F j, Y') }}</time></span>
+        </p>
+        
+        <p>{{ comment.comment }}</p>
+    </article>
+{% else %}
+    <p class="text-info">There are no comments for this post. Be the first to comment...</p>
+{% endfor %}

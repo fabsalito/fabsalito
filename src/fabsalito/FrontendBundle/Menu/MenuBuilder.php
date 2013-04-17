@@ -23,7 +23,7 @@ class MenuBuilder
     {
         // menu object
         $menu = $this->factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'nav pull-right');
+        $menu->setChildrenAttribute('class', 'nav');
 
         $menu->addChild('Home', array('route' => 'frontend_homepage'));
         $menu->addChild('Blog', array('route' => 'fabsalito_blog_homepage'));

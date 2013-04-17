@@ -1,0 +1,35 @@
+{% if app.session.hasFlash('comment-notice') %}
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Well done!</strong> {{ app.session.flash('comment-notice') }}
+    </div>
+{% endif %}
+
+<form action="{{ path('fabsalito_blog_comment_create', { 'blog_id' : comment.blog.id } ) }}" method="post" {{ form_enctype(form) }}>
+    <fieldset>
+        <div>
+            {{ form_label(form.user, 'User') }}
+            <p class="text-error">
+                {{ form_errors(form.user) }}
+            </p>
+            {{ form_widget(form.user,  { 'attr': { 
+                'class': 'input-block-level'
+                }}) 
+            }}
+        </div>
+
+        <div>
+            {{ form_label(form.comment, 'Comment') }}
+            <p class="text-error">{{ form_errors(form.comment) }}</p>
+            {{ form_widget(form.comment,  { 'attr': { 
+                'class': 'input-block-level'
+                }}) 
+            }}
+        </div>
+        
+        {{ form_rest(form) }}
+
+        <input class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit" value="Create" />
+    </fieldset>
+</form>
+

@@ -3,3 +3,17 @@ fabsalito_blog_homepage:
     defaults: { _controller: fabsalitoBlogBundle:Page:index }
     requirements:
         _method:  GET
+
+fabsalito_blog_show:
+    pattern:  /{id}
+    defaults: { _controller: fabsalitoBlogBundle:Blog:show }
+    requirements:
+        _method:  GET
+        id: \d+
+
+fabsalito_blog_comment_create:
+    pattern:  /comment/{blog_id}
+    defaults: { _controller: fabsalitoBlogBundle:Comment:create }
+    requirements:
+        _method:  POST
+        blog_id: \d+

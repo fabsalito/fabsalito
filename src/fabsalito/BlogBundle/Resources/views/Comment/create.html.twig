@@ -1,0 +1,15 @@
+{% extends 'fabsalitoBlogBundle::layout.html.twig' %}
+
+{% block title_primary %}Add comment{% endblock title_primary %}
+
+{% block body %}
+<div class="span12">
+    <legend>Add comment for blog post "{{ comment.blog.title }}"</legend>
+    
+    {% include 'fabsalitoBlogBundle:Comment:includes/form.html.twig' with { 'form': form } %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+
+{% endblock sidebar %}

@@ -1,0 +1,55 @@
+<div class="sidebar">
+    <div class="row">
+        <div class="span3">
+            <span class="pull-right">
+                <h3>Tags</h3>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span3">
+            <p>
+                {% for tag, weight in tags %}
+                    <span class="cloud-tag cloud-weight-{{ weight }}">{{ tag }}</span>
+                {% else %}
+                    <p class="text-info">There are no tags</p>
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span3">
+            <span class="pull-right">
+                <h3>Comments</h3>
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span3">
+            {% for comment in latestComments %}
+                <article>
+                    <p>
+                        <small>
+                            <span class="muted"><strong>{{ comment.user }}</strong> commented on</span>
+                            
+                            <a href="{{ path('fabsalito_blog_show', { 'id': comment.blog.id }) }}#comment-{{ comment.id }}">
+                                {{ comment.blog.title }}
+                            </a>
+                            
+                            [<em><span class="muted"><time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('Y-m-d h:iA') }}</time></span></em>]
+                        </small>
+                    </p>
+                    <p>
+                        <small>
+                            {{ comment.comment }}
+                        </small>
+                    </p>
+                </article>
+            {% else %}
+                <p class="text-info">There are no recent comments</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>

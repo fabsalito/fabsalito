@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: @FrontendBundle/Resources/config/config.yml }
+    - { resource: @fabsalitoBlogBundle/Resources/config/config.yml }
 
 framework:
     #esi:             ~
@@ -53,6 +54,7 @@ assetic:
         css:
             inputs:
                 - "%kernel.root_dir%/../web/css/twitter-bootstrap-extras.css"
+                - "%kernel.root_dir%/../web/css/sidebar.css"
             filters: [cssrewrite]
 
 

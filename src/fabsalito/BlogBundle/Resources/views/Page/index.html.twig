@@ -23,7 +23,9 @@
         <p><a class="btn btn-primary" href="{{ path('fabsalito_blog_show', { 'id': blog.id }) }}">Continue reading...</a></p>
 
         <ul>
-            <li><strong>Comments:</strong> -</li>
+            <li>
+                <strong>Comments:</strong> <a href="{{ path('fabsalito_blog_show', { 'id': blog.id }) }}#comments">{{ blog.comments|length }}</a>
+            </li>
             <li><strong>Posted by:</strong> {{blog.author}} at {{ blog.created|date('h:iA') }}</li>
             <li><strong>Tags:</strong> {{ blog.tags }}</li>
         </ul>

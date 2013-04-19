@@ -1,14 +1,14 @@
 <div class="sidebar">
     <div class="row">
-        <div class="span3">
+        <div class="span3 section-title">
             <span class="pull-right">
-                <h3>Tags</h3>
+                <h4>Tags</h4>
             </span>
         </div>
     </div>
     <div class="row">
         <div class="span3">
-            <p>
+            <p class="text-center">
                 {% for tag, weight in tags %}
                     <span class="cloud-tag cloud-weight-{{ weight }}">{{ tag }}</span>
                 {% else %}
@@ -19,9 +19,9 @@
     </div>
 
     <div class="row">
-        <div class="span3">
+        <div class="span3 section-title">
             <span class="pull-right">
-                <h3>Comments</h3>
+                <h4>Comments</h4>
             </span>
         </div>
     </div>
@@ -38,7 +38,9 @@
                                 {{ comment.blog.title }}
                             </a>
                             
-                            [<em><span class="muted"><time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('Y-m-d h:iA') }}</time></span></em>]
+                            [<em><span class="muted">
+                                <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('Y-m-d h:iA') }}</time>
+                            </span></em>]
                         </small>
                     </p>
                     <p>

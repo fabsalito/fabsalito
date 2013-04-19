@@ -55,6 +55,7 @@ assetic:
             inputs:
                 - "%kernel.root_dir%/../web/css/twitter-bootstrap-extras.css"
                 - "%kernel.root_dir%/../web/css/sidebar.css"
+                - "%kernel.root_dir%/../web/css/blog.css"
             filters: [cssrewrite]
 
 

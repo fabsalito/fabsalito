@@ -11,6 +11,7 @@
         
         <h3><a href="{{ path('fabsalito_blog_show', { 'id': blog.id }) }}">{{ blog.title }}</a></h3>
 
+        {#
         <ul class="thumbnails">
             <li class="span4">
                 <a href="#" class="thumbnail">
@@ -18,6 +19,7 @@
                 </a>
             </li>
         </ul>
+        #}
 
         <p>{{ blog.blog(500) }}</p>
         <p><a class="btn btn-primary" href="{{ path('fabsalito_blog_show', { 'id': blog.id }) }}">Continue reading...</a></p>

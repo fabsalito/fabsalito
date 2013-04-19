@@ -4,26 +4,63 @@
 
 {% block body %}
 <div class="span9">
-    <div class="muted">
-        <time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time>
+    <div class="row">
+        <div class="span9">
+            <div class="muted">
+                <time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time>
+            </div>
+
+            <legend>{{ blog.title }}</legend>
+        </div>
+    </div>
+ 
+    <div class="row">
+        <div class="span9">
+            {#
+            <ul class="thumbnails">
+                <li class="span4">
+                    <a href="#" class="thumbnail">
+                        <img src="{{ asset(['images/', blog.image]|join) }}" alt="{{ blog.title }} image not found">
+                    </a>
+                </li>
+            </ul>
+            #}
+
+            <p>{{ blog.blog }}</p>
+        </div>
+    </div>    
+
+    <div class="row">
+        <div class="span9 section-title">
+
+            <h4>Comments</h4>
+
+        </div>
     </div>
 
-    <legend>{{ blog.title }}</legend>
-    
-    <ul class="thumbnails">
-        <li class="span4">
-            <a href="#" class="thumbnail">
-                <img src="{{ asset(['images/', blog.image]|join) }}" alt="{{ blog.title }} image not found">
-            </a>
-        </li>
-    </ul>
+    <div class="row">
+        <div class="span9">
 
-    <p>{{ blog.blog }}</p>
+            {% include 'fabsalitoBlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
 
-    <h3>Comments</h3>
-    {% include 'fabsalitoBlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
+        </div>
+    </div>
 
-    <h3>Add Comment</h3>
-    {{ render(controller('fabsalitoBlogBundle:Comment:new', { 'blog_id': blog.id })) }}
+    <div class="row">
+        <div class="span9 section-title">
+          
+            <h4>Add Comment</h4>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span9">    
+            
+            {{ render(controller('fabsalitoBlogBundle:Comment:new', { 'blog_id': blog.id })) }}
+
+        </div>
+    </div>
+
 </div>
 {% endblock body %}

@@ -34,12 +34,12 @@
                         <small>
                             <span class="muted"><strong>{{ comment.user }}</strong> commented on</span>
                             
-                            <a href="{{ path('fabsalito_blog_show', { 'id': comment.blog.id }) }}#comment-{{ comment.id }}">
+                            <a href="{{ path('fabsalito_blog_show', { 'id': comment.blog.id, 'slug': comment.blog.slug }) }}#comment-{{ comment.id }}">
                                 {{ comment.blog.title }}
                             </a>
                             
                             [<em><span class="muted">
-                                <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('Y-m-d h:iA') }}</time>
+                                <time datetime="{{ comment.created|date('c') }}">{{ comment.created|created_ago }}</time>
                             </span></em>]
                         </small>
                     </p>

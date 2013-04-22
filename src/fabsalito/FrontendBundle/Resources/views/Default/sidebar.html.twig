@@ -1,0 +1,46 @@
+<div class="sidebar">
+    <div class="row">
+        <div class="span3 section-title">
+            <span class="pull-right">
+                <h4>Blogs</h4>
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span3">
+            {% for blog in latestBlogs %}
+                <article>
+                    <p>
+                        <small>
+                            <p>
+                                <a href="{{ path('fabsalito_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}">
+                                    <strong>{{ blog.title }}</strong>
+                                </a>
+                            </p>
+                            
+                            <span class="muted">Created by <strong>{{ blog.author }}</strong></span>
+
+                            [<em><span class="muted">
+                                <time datetime="{{ blog.created|date('c') }}">{{ blog.created|created_ago }}</time>
+                            </span></em>]
+                            
+                        </small>
+                    </p>
+                    <p>
+                        <small>
+                            {{ blog.blog()[:200] }}
+                        </small>
+                    </p>
+                    <p>
+                        <a class="btn btn-primary btn-small" href="{{ path('fabsalito_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}">
+                            Continue reading...
+                        </a>
+                    </p>
+                </article>
+            {% else %}
+                <p class="text-info">There are no recent blogs</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>

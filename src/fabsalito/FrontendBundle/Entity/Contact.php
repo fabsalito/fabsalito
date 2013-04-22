@@ -50,7 +50,7 @@ class Contact
      *
      * @Assert\Type(type="string")
      * @Assert\NotBlank()
-     * @Assert\MaxLength(50)
+     * @Assert\Length(max = "50")
      */
     private $subject;
 
@@ -59,7 +59,7 @@ class Contact
      *
      * @ORM\Column(name="content", type="text")
      *
-     * @Assert\MinLength(50)
+     * @Assert\Length(min = "50")
      */
     private $content;
 

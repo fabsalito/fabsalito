@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: @FrontendBundle/Resources/config/config.yml }
     - { resource: @fabsalitoBlogBundle/Resources/config/config.yml }
+    #- { resource: @fabsalitoBlogBundle/Resources/config/services.yml }
 
 framework:
     #esi:             ~
@@ -17,6 +18,7 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
+        assets_base_urls: "/public"
     default_locale:  "%locale%"
     trusted_proxies: ~
     session:         ~
@@ -34,6 +36,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
+    write_to:       "%kernel.root_dir%/../web/public/"
     bundles:        [ ]
     #java: /usr/bin/java
     filters:
@@ -51,12 +54,30 @@ assetic:
             inputs:
                 - "@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less"
             filters: [less]
+            #output: "css/compiled/main.css"
         css:
             inputs:
-                - "%kernel.root_dir%/../web/css/twitter-bootstrap-extras.css"
-                - "%kernel.root_dir%/../web/css/sidebar.css"
-                - "%kernel.root_dir%/../web/css/blog.css"
-            filters: [cssrewrite]
+                - "%kernel.root_dir%/Resources/css/twitter-bootstrap-extras.css"
+            #filters: [cssrewrite]
+            #output: "css/compiled/main.css"
+        javascript:
+            inputs:
+                - "%kernel.root_dir%/Resources/js/thirdparty/jquery-1.7.1.min.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-transition.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-modal.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-dropdown.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-scrollspy.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tab.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tooltip.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-popover.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-alert.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-button.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-collapse.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-carousel.js"
+                - "@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-typeahead.js"
+                - "@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js"
+                - "@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js"
+            #output: "js/compiled/main.js"
 
 
 # Doctrine Configuration

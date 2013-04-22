@@ -2,6 +2,6 @@
 
 {% block sidebar %}
     <div class="span3">
-    #SIDEBAR#
+        {{ render(controller('FrontendBundle:Default:sidebar')) }}
     </div>
 {% endblock %}

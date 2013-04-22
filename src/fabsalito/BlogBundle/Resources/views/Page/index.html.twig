@@ -9,7 +9,7 @@
             <time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time>
         </div>
         
-        <h3><a href="{{ path('fabsalito_blog_show', { 'id': blog.id }) }}">{{ blog.title }}</a></h3>
+        <h3><a href="{{ path('fabsalito_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}">{{ blog.title }}</a></h3>
 
         {#
         <ul class="thumbnails">
@@ -21,14 +21,19 @@
         </ul>
         #}
 
-        <p>{{ blog.blog(500) }}</p>
-        <p><a class="btn btn-primary" href="{{ path('fabsalito_blog_show', { 'id': blog.id }) }}">Continue reading...</a></p>
+        <p>{{ blog.blog()[:500] }}</p>
+        
+        <p>
+            <a class="btn btn-primary" href="{{ path('fabsalito_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}">
+                Continue reading...
+            </a>
+        </p>
 
         <ul>
             <li>
-                <strong>Comments:</strong> <a href="{{ path('fabsalito_blog_show', { 'id': blog.id }) }}#comments">{{ blog.comments|length }}</a>
+                <strong>Comments:</strong> <a href="{{ path('fabsalito_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}#comments">{{ blog.comments|length }}</a>
             </li>
-            <li><strong>Posted by:</strong> {{blog.author}} at {{ blog.created|date('h:iA') }}</li>
+            <li><strong>Posted by:</strong> {{blog.author}} [<em>{{ blog.created|created_ago }}</em>]</li>
             <li><strong>Tags:</strong> {{ blog.tags }}</li>
         </ul>
     {% else %}

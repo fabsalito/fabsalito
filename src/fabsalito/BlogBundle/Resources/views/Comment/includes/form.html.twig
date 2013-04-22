@@ -1,7 +1,7 @@
-{% if app.session.hasFlash('comment-notice') %}
+{% if app.session.flashbag.has('comment-notice') %}
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Well done!</strong> {{ app.session.flash('comment-notice') }}
+        <strong>Well done!</strong> {{ app.session.flashbash.get('comment-notice') }}
     </div>
 {% endif %}
 

@@ -1,7 +1,7 @@
 {% for comment in comments %}
     <article id="comment-{{ comment.id }}">
         <p>
-            <strong>{{ comment.user }}</strong> <span class="muted">commented <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('l, F j, Y') }}</time></span>
+            <strong>{{ comment.user }}</strong> <span class="muted">commented <time datetime="{{ comment.created|date('c') }}">{{ comment.created|created_ago }}</time></span>
         </p>
         
         <p>{{ comment.comment }}</p>

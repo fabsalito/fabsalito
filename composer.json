@@ -21,7 +21,8 @@
 	    "mopa/bootstrap-bundle": "2.*",
 	    "twitter/bootstrap": "2.*",
         "knplabs/knp-menu-bundle" : "1.*",
-        "doctrine/doctrine-fixtures-bundle": "2.*"
+        "doctrine/doctrine-fixtures-bundle": "2.*",
+        "stof/doctrine-extensions-bundle": "1.*"
     },
     "scripts": {
         "post-install-cmd": [

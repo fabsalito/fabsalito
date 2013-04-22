@@ -1,3 +1,4 @@
 parameters:
     # dirección de correo electrónico para contacto del Blogger
     frontend.emails.contact_email: fabricio.salinas@gmail.com
+    frontend.blogs.latest_blog_limit: 100

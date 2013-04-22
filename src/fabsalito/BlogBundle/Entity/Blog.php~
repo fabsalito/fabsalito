@@ -33,6 +33,15 @@ class Blog
     private $title;
 
     /**
+     * @var string $slug
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     *
+     * @Assert\Type(type="string")
+     */
+    private $slug;
+
+    /**
      * @var string $author
      *
      * @ORM\Column(name="author", type="string", length=100)
@@ -90,14 +99,6 @@ class Blog
      * @Assert\DateTime
      */
     private $updated;
-
-    //public function __construct()
-    //{
-    //    $this->comments = new ArrayCollection();
-        
-    //    $this->setCreated(new \DateTime());
-    //    $this->setUpdated(new \DateTime());
-    //}
 
     /**
      * @ORM\PreUpdate
@@ -276,5 +277,55 @@ class Blog
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        //$this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comments = new ArrayCollection();
+
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
+    
+    /**
+     * Add comments
+     *
+     * @param \fabsalito\BlogBundle\Entity\Comment $comments
+     * @return Blog
+     */
+    public function addComment(\fabsalito\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \fabsalito\BlogBundle\Entity\Comment $comments
+     */
+    public function removeComment(\fabsalito\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function __toString()
+    {
+        $this->getTitle();
     }
 }

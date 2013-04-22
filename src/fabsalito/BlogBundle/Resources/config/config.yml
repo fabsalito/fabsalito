@@ -1,3 +1,13 @@
 parameters:
     # Blogger máximo de comentarios recientes
     fabsalito_blog.comments.latest_comment_limit: 10
+
+# Assetic Configuration
+assetic:
+    assets:
+        css:
+            inputs:
+                - "@fabsalitoBlogBundle/Resources/public/css/sidebar.css"
+                - "@fabsalitoBlogBundle/Resources/public/css/blog.css"
+            #filters: [cssrewrite]
+            #output: "css/compiled/main.css"

@@ -28,6 +28,7 @@ class Comment
      * @ORM\Column(name="user", type="string", length=50)
      *
      * @Assert\Type(type="string")
+     * @Assert\NotBlank()
      */
     private $user;
 
@@ -36,7 +37,7 @@ class Comment
      *
      * @ORM\Column(name="comment", type="text")
      *
-     * @Assert\Type(type="text")
+     * @Assert\NotBlank()
      */
     private $comment;
 
@@ -73,13 +74,13 @@ class Comment
      */
     private $updated;
 
-    //public function __construct()
-    //{
-    //    $this->setCreated(new \DateTime());
-    //    $this->setUpdated(new \DateTime());
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
 
-    //    $this->setApproved(true);
-    //}
+        $this->setApproved(true);
+    }
 
     /**
      * @ORM\PreUpdate
@@ -213,5 +214,28 @@ class Comment
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set blog
+     *
+     * @param \fabsalito\BlogBundle\Entity\Blog $blog
+     * @return Comment
+     */
+    public function setBlog(\fabsalito\BlogBundle\Entity\Blog $blog = null)
+    {
+        $this->blog = $blog;
+    
+        return $this;
+    }
+
+    /**
+     * Get blog
+     *
+     * @return \fabsalito\BlogBundle\Entity\Blog 
+     */
+    public function getBlog()
+    {
+        return $this->blog;
     }
 }

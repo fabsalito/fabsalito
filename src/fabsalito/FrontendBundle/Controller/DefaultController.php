@@ -27,7 +27,7 @@ class DefaultController extends Controller
         $request = $this->getRequest();
 
         if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->bind($request);
 
             if ($form->isValid()) {
                 $message = \Swift_Message::newInstance()
@@ -38,7 +38,7 @@ class DefaultController extends Controller
                 
                 $this->get('mailer')->send($message);
 
-                $this->get('session')->setFlash('blogger-notice', 'Your contact enquiry was successfully sent. Thank you!');
+                $this->get('session')->getFlashBag()->add('blogger-notice', 'Your contact enquiry was successfully sent. Thank you!');
 
                 // Redirige - Esto es importante para prevenir que el usuario
                 // reenvíe el formulario si actualiza la página
@@ -48,6 +48,23 @@ class DefaultController extends Controller
 
         return $this->render('FrontendBundle:Default:contact.html.twig', array(
             'form' => $form->createView()
+        ));
+    }
+
+    public function sidebarAction()
+    {
+        $em = $this->getDoctrine()
+                   ->getManager();
+
+        $blogLimit = $this->container->getParameter('frontend.blogs.latest_blog_limit');
+
+        $latestBlogs = $em->getRepository('fabsalitoBlogBundle:Blog')
+                          ->getLatestBlogs($blogLimit);
+
+        //\Doctrine\Common\Util\Debug::dump($latestBlogs);
+
+        return $this->render('FrontendBundle:Default:sidebar.html.twig', array(
+            'latestBlogs' => $latestBlogs
         ));
     }
 }

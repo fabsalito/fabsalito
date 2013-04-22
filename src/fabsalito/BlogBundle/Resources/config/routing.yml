@@ -5,7 +5,7 @@ fabsalito_blog_homepage:
         _method:  GET
 
 fabsalito_blog_show:
-    pattern:  /{id}
+    pattern:  /{id}/{slug}
     defaults: { _controller: fabsalitoBlogBundle:Blog:show }
     requirements:
         _method:  GET

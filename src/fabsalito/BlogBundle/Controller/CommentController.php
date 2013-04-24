@@ -15,7 +15,15 @@ class CommentController extends Controller
 
     public function newAction($blog_id)
     {
-        $blog = $this->getBlog($blog_id);
+
+        $em = $this->getDoctrine()
+                   ->getManager();
+
+        $blog = $em->getRepository('fabsalitoBlogBundle:Blog')->find($blog_id);
+
+        if (!$blog) {
+            throw $this->createNotFoundException('Unable to find Blog post.');
+        }
 
         $comment = new Comment();
         $comment->setBlog($blog);
@@ -29,7 +37,14 @@ class CommentController extends Controller
 
     public function createAction($blog_id)
     {
-        $blog = $this->getBlog($blog_id);
+        $em = $this->getDoctrine()
+                   ->getManager();
+
+        $blog = $em->getRepository('fabsalitoBlogBundle:Blog')->find($blog_id);
+
+        if (!$blog) {
+            throw $this->createNotFoundException('Unable to find Blog post.');
+        }
 
         $comment  = new Comment();
         $comment->setBlog($blog);
@@ -47,8 +62,8 @@ class CommentController extends Controller
             //$this->get('session')->getFlashBag()->add('comment-notice', 'Your contact enquiry was successfully sent. Thank you!');
 
             return $this->redirect($this->generateUrl('fabsalito_blog_show', array(
-                'id' => $comment->getBlog()->getId(),
-                'slug' => $comment->getBlog()->getSlug()
+                    'id' => $comment->getBlog()->getId(),
+                    'slug' => $comment->getBlog()->getSlug()
                 )) .
                 '#comment-' . $comment->getId()
             );
@@ -60,17 +75,4 @@ class CommentController extends Controller
         ));
     }
 
-    protected function getBlog($blog_id)
-    {
-        $em = $this->getDoctrine()
-                   ->getManager();
-
-        $blog = $em->getRepository('fabsalitoBlogBundle:Blog')->find($blog_id);
-
-        if (!$blog) {
-            throw $this->createNotFoundException('Unable to find Blog post.');
-        }
-
-        return $blog;
-    }
 }

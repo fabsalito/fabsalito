@@ -3,6 +3,8 @@
 namespace fabsalito\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use fabsalito\BlogBundle\Entity\Comment;
+use fabsalito\BlogBundle\Form\CommentType;
 
 class BlogController extends Controller
 {
@@ -19,9 +21,14 @@ class BlogController extends Controller
         $comments = $em->getRepository('fabsalitoBlogBundle:Comment')
                        ->getCommentsForBlog($blog->getId());
 
+        $comment = new Comment();
+        $comment->setBlog($blog);
+        $form   = $this->createForm(new CommentType(), $comment);
+
         return $this->render('fabsalitoBlogBundle:Blog:show.html.twig', array(
-            'blog' => $blog,
-            'comments' => $comments
+            'blog'      => $blog,
+            'comments'  => $comments,
+            'form'      => $form->createView()
         ));
     }
 }

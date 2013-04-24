@@ -41,7 +41,8 @@
     <div class="row">
         <div class="span9">
 
-            {% include 'fabsalitoBlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
+            {#% include 'fabsalitoBlogBundle:Comment:index.html.twig' with { 'comments': comments } %#}
+            {% include 'fabsalitoBlogBundle:Comment:index.html.twig' %}
 
         </div>
     </div>
@@ -57,7 +58,8 @@
     <div class="row">
         <div class="span9">    
             
-            {{ render(controller('fabsalitoBlogBundle:Comment:new', { 'blog_id': blog.id })) }}
+            {#% include 'fabsalitoBlogBundle:Comment:includes/form.html.twig' with { 'form': form } %#}
+            {% include 'fabsalitoBlogBundle:Comment:includes/form.html.twig' %}
 
         </div>
     </div>

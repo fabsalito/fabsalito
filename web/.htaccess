@@ -6,6 +6,7 @@
 DirectoryIndex app.php
 
 <IfModule mod_rewrite.c>
+    RewriteBase /
     RewriteEngine On
 
     # Redirect to URI without front controller to prevent duplicate content
